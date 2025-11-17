@@ -1,0 +1,8 @@
+chromadb
+sentence-transformers
+pymupdf
+fastapi
+uvicorn[standard]
+google-cloud-aiplatform
+python-dotenv
+pypff  # optional, only if you need native PST parsing
