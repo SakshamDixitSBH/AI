@@ -91,3 +91,21 @@ curl -X POST "http://localhost:8000/answer" \
   -H "Content-Type: application/json" \
   -d '{"question":"Who approves exposure between 50k and 250k?","kind":"all","k":5}'
 ```
+
+
+import os
+import vertexai
+from vertexai.preview.language_models import TextEmbeddingModel
+
+project_id = "YOUR_GCP_PROJECT_ID"  # put your project ID here
+location = "us-central1"
+
+vertexai.init(project=project_id, location=location)
+
+try:
+    model = TextEmbeddingModel.from_pretrained("text-embedding-004")
+    embeddings = model.get_embeddings(["test embedding for credit policy"])
+    print("OK – Vertex embeddings working. Dim:", len(embeddings[0].values))
+except Exception as e:
+    print("Error:", type(e).__name__, e)
+
