@@ -1,38 +1,79 @@
-import os
-import vertexai
-from vertexai.preview.generative_models import GenerativeModel
+import textwrap
+
+from .vertex_client import vertex_gen_ai
 
 
 def build_rag_prompt(question, hits, top_n: int = 5) -> str:
+    """
+    Build a RAG prompt from the user question + top-k BM25 hits.
+    """
+
     context_lines = []
     for h in hits[:top_n]:
         meta = h.get("meta", {})
         src_type = meta.get("source_type", "doc")
         page = meta.get("page")
-        prefix = f"[{src_type} p.{page}]" if page else f"[{src_type}]"
-        context_lines.append(f"{prefix} {h['text']}")
+        if page is not None:
+            prefix = f"[{src_type} p.{page}]"
+        else:
+            prefix = f"[{src_type}]"
+
+        snippet = h["text"].strip().replace("\n", " ")
+        context_lines.append(f"{prefix} {snippet}")
+
     context = "\n\n".join(context_lines)
 
-    return (
-        "You are a helpful assistant answering questions about credit policies and emails.\n"
-        "Use ONLY the provided context. If you are not sure, say you are not sure.\n\n"
-        f"Question: {question}\n\n"
-        f"Context:\n{context}\n\n"
-        "Answer concisely and, when possible, mention which source you used."
-    )
+    prompt = f"""
+    You are a helpful assistant for credit policy and credit approval questions.
+
+    Use ONLY the context below to answer. If the answer is not clearly present,
+    say that you are not sure and indicate which document/page should be checked.
+
+    Question:
+    {question}
+
+    Context:
+    {context}
+
+    Answer:
+    """
+    return textwrap.dedent(prompt).strip()
 
 
-def generate_vertex_answer(question, hits, project_id=None, location=None, model_name=None) -> str:
-    project_id = project_id or os.getenv("VERTEX_PROJECT_ID")
-    location = location or os.getenv("VERTEX_LOCATION", "us-central1")
-    model_name = model_name or os.getenv("VERTEX_MODEL_NAME", "gemini-1.5-pro")
+def generate_vertex_answer(question, hits, **kwargs) -> str:
+    """
+    Main LLM call used by FastAPI `/search` endpoint.
 
-    if not project_id:
-        return "Vertex project is not configured (VERTEX_PROJECT_ID missing)."
+    Steps:
+      1. Build RAG prompt from question + hits
+      2. Send prompt to Vertex via VertexGenAI
+      3. Return the model's text answer
 
-    vertexai.init(project=project_id, location=location)
-    model = GenerativeModel(model_name)
+    If anything fails, returns a fallback text + top hits for debugging.
+    """
+
+    if not hits:
+        return "No relevant context found in the ingested documents."
 
     prompt = build_rag_prompt(question, hits)
-    resp = model.generate_content(prompt)
-    return resp.text
+
+    try:
+        return vertex_gen_ai.generate(prompt)
+    except Exception as e:
+        # Fallback for POC – you can improve this later.
+        lines = [
+            f"Error calling Vertex: {e}",
+            "",
+            "Top hits (for debugging):",
+        ]
+        for h in hits[:3]:
+            meta = h.get("meta", {})
+            src_type = meta.get("source_type", "doc")
+            page = meta.get("page")
+            if page is not None:
+                prefix = f"[{src_type} p.{page}]"
+            else:
+                prefix = f"[{src_type}]"
+            snippet = h["text"][:200].replace("\n", " ")
+            lines.append(f"- {prefix} {snippet}...")
+        return "\n".join(lines)
