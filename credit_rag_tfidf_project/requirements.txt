@@ -1,0 +1,7 @@
+fastapi
+uvicorn[standard]
+pymupdf
+extract-msg
+scikit-learn
+google-cloud-aiplatform
+python-dotenv
