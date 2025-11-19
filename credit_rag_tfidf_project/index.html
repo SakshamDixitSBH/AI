@@ -7,8 +7,8 @@
   <style>
     :root {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      color: #111827;
-      background-color: #f3f4f6;
+      color: #0f172a;
+      background: radial-gradient(circle at top, #e0f2fe 0, #f3f4f6 45%, #e5e7eb 100%);
     }
 
     body {
@@ -19,31 +19,33 @@
       height: 100vh;
       display: grid;
       grid-template-rows: auto 1fr auto;
-      max-width: 960px;
+      max-width: 720px;          /* narrower, less “big box” */
       margin: 0 auto;
-      padding: 12px;
+      padding: 16px 12px;
       box-sizing: border-box;
     }
 
     .app-header {
       display: flex;
       justify-content: space-between;
-      align-items: flex-end;
+      align-items: flex-start;
       gap: 12px;
-      padding: 12px 16px;
+      padding: 10px 14px;
       background: white;
-      border-radius: 10px;
-      box-shadow: 0 1px 4px rgba(15, 23, 42, 0.08);
+      border-radius: 14px;
+      box-shadow: 0 6px 16px rgba(15, 23, 42, 0.08);
+      border: 1px solid #e5e7eb;
     }
 
     .app-header h1 {
       margin: 0;
-      font-size: 1.3rem;
+      font-size: 1.1rem;
+      font-weight: 600;
     }
 
     .app-subtitle {
       margin: 4px 0 0;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       color: #6b7280;
     }
 
@@ -51,28 +53,30 @@
       font-size: 0.7rem;
       background: #eff6ff;
       color: #1d4ed8;
-      padding: 4px 8px;
+      padding: 3px 8px;
       border-radius: 999px;
-      max-width: 260px;
+      max-width: 220px;
       text-overflow: ellipsis;
       overflow: hidden;
       white-space: nowrap;
+      border: 1px solid #bfdbfe;
     }
 
     .app-main {
       margin-top: 10px;
-      margin-bottom: 10px;
-      padding: 12px 16px;
+      margin-bottom: 8px;
+      padding: 10px 12px;
       background: white;
-      border-radius: 10px;
-      box-shadow: 0 1px 4px rgba(15, 23, 42, 0.06);
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+      border: 1px solid #e5e7eb;
       overflow-y: auto;
     }
 
     .message-list {
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 6px;
     }
 
     .message-row {
@@ -88,29 +92,33 @@
     }
 
     .message-bubble {
-      max-width: 80%;
-      padding: 8px 10px;
-      border-radius: 10px;
+      max-width: 78%;
+      padding: 7px 10px;
+      border-radius: 12px;
       font-size: 0.9rem;
+      line-height: 1.35;
     }
 
     .message-bubble--user {
       background: #2563eb;
       color: white;
-      border-bottom-right-radius: 2px;
+      border-bottom-right-radius: 4px;
     }
 
     .message-bubble--assistant {
       background: #f3f4f6;
-      color: #111827;
-      border-bottom-left-radius: 2px;
+      color: #0f172a;
+      border-bottom-left-radius: 4px;
+      border: 1px solid #e5e7eb;
     }
 
     .message-role {
-      font-size: 0.7rem;
+      font-size: 0.68rem;
       font-weight: 600;
       opacity: 0.8;
-      margin-bottom: 4px;
+      margin-bottom: 2px;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
     }
 
     .message-text {
@@ -124,37 +132,47 @@
     .message-input {
       display: flex;
       gap: 8px;
-      align-items: flex-end;
+      align-items: center;
+      padding: 6px 8px;
+      background: white;
+      border-radius: 999px;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+      border: 1px solid #e5e7eb;
     }
 
     .message-input__textarea {
       flex: 1;
       resize: none;
-      padding: 8px 10px;
-      border-radius: 8px;
-      border: 1px solid #d1d5db;
+      padding: 6px 8px;
+      border-radius: 999px;
+      border: none;
       font-family: inherit;
       font-size: 0.9rem;
+      line-height: 1.3;
+      max-height: 72px;     /* prevent it from getting too tall */
+      min-height: 28px;     /* small by default */
+      outline: none;
     }
 
-    .message-input__textarea:focus {
-      outline: none;
-      border-color: #2563eb;
-      box-shadow: 0 0 0 1px #2563eb20;
+    .message-input__textarea::placeholder {
+      color: #9ca3af;
+      font-size: 0.85rem;
     }
 
     .message-input__button {
-      padding: 8px 14px;
+      padding: 6px 14px;
       border-radius: 999px;
       border: none;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       cursor: pointer;
       background: #2563eb;
       color: white;
+      font-weight: 500;
+      white-space: nowrap;
     }
 
     .message-input__button:disabled {
-      opacity: 0.6;
+      opacity: 0.65;
       cursor: default;
     }
 
@@ -164,8 +182,24 @@
       border-radius: 8px;
       background: #fef2f2;
       color: #b91c1c;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       display: none;
+    }
+
+    @media (max-width: 600px) {
+      .app-root {
+        max-width: 100%;
+        padding-inline: 8px;
+      }
+
+      .app-header,
+      .app-main {
+        padding-inline: 10px;
+      }
+
+      .message-bubble {
+        max-width: 84%;
+      }
     }
   </style>
 </head>
@@ -191,8 +225,8 @@
         <textarea
           id="input"
           class="message-input__textarea"
-          rows="2"
-          placeholder="Ask a question about a credit policy, CARP, exposure, limits..."
+          rows="1"
+          placeholder="Ask about a credit policy, CARP, exposure, limits..."
         ></textarea>
         <button id="send-btn" class="message-input__button">
           Send
@@ -285,6 +319,7 @@
 
       appendMessage("user", question);
       inputEl.value = "";
+      inputEl.style.height = "28px"; // reset small
       inputEl.focus();
 
       isLoading = true;
@@ -309,6 +344,13 @@
         sendBtn.textContent = "Send";
       }
     }
+
+    // Auto-adjust textarea height (but still small)
+    inputEl.addEventListener("input", () => {
+      inputEl.style.height = "28px";
+      const newHeight = Math.min(inputEl.scrollHeight, 72);
+      inputEl.style.height = newHeight + "px";
+    });
 
     // Initial welcome message
     appendMessage(
