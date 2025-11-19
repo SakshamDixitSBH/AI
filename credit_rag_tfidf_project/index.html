@@ -145,4 +145,208 @@
 
     .message-input {
       display: flex;
-      align-items: cen
+      align-items: center;
+      gap: 8px;
+      padding: 6px 8px;
+      background: white;
+      border-radius: 999px;
+      border: 1px solid #d1d5db;
+      box-shadow: 0 4px 10px rgba(15, 23, 42, 0.04);
+    }
+
+    .message-input__textarea {
+      flex: 1;
+      border: none;
+      resize: none;
+      padding: 4px 6px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      min-height: 24px;
+      max-height: 70px;
+      outline: none;
+    }
+
+    .message-input__textarea::placeholder {
+      color: #9ca3af;
+      font-size: 0.85rem;
+    }
+
+    .message-input__button {
+      border: none;
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      background: #2563eb;
+      color: white;
+      white-space: nowrap;
+    }
+
+    .message-input__button:disabled {
+      background: #93c5fd;
+      cursor: default;
+    }
+
+    @media (max-width: 600px) {
+      .app-root {
+        padding-inline: 8px;
+      }
+      .message-bubble {
+        max-width: 85%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Banner kept, colors original-ish -->
+  <div class="banner">
+    <div class="banner-inner">
+      <div>
+        <div class="banner-title">Credit RAG Assistant</div>
+        <div class="banner-sub">Ask about CARP, credit policies, exposure and approvals.</div>
+      </div>
+      <div class="banner-right">Backend: http://localhost:8000/search</div>
+    </div>
+  </div>
+
+  <!-- App container -->
+  <div class="app-root">
+    <main class="app-main">
+      <div id="error" class="app-error"></div>
+      <div id="message-list" class="message-list"></div>
+    </main>
+
+    <footer class="app-footer">
+      <div class="message-input">
+        <textarea
+          id="input"
+          class="message-input__textarea"
+          rows="1"
+          placeholder="Type your question about credit policies..."
+        ></textarea>
+        <button id="send-btn" class="message-input__button">Send</button>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // ====== CONFIG ======
+    const RAG_API_URL = "http://localhost:8000/search";
+
+    const messageListEl = document.getElementById("message-list");
+    const inputEl      = document.getElementById("input");
+    const sendBtn      = document.getElementById("send-btn");
+    const errorEl      = document.getElementById("error");
+
+    let isLoading = false;
+
+    function createMessageElement(role, text) {
+      const row = document.createElement("div");
+      row.className = "message-row " + (role === "user" ? "message-row--user" : "message-row--assistant");
+
+      const bubble = document.createElement("div");
+      bubble.className = "message-bubble " + (role === "user" ? "message-bubble--user" : "message-bubble--assistant");
+
+      const roleLabel = document.createElement("div");
+      roleLabel.className = "message-role";
+      roleLabel.textContent = role === "user" ? "You" : "Credit RAG";
+
+      const textEl = document.createElement("div");
+      textEl.className = "message-text";
+      textEl.textContent = text;
+
+      bubble.appendChild(roleLabel);
+      bubble.appendChild(textEl);
+      row.appendChild(bubble);
+
+      return row;
+    }
+
+    function appendMessage(role, text) {
+      const el = createMessageElement(role, text);
+      messageListEl.appendChild(el);
+      const container = messageListEl.parentElement;
+      container.scrollTop = container.scrollHeight;
+    }
+
+    async function callRag(question) {
+      const resp = await fetch(RAG_API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          question: question,
+          kind: "all",
+          k: "5"
+        })
+      });
+
+      if (!resp.ok) {
+        const text = await resp.text().catch(() => "");
+        throw new Error(`Backend error (${resp.status}): ${text || resp.statusText}`);
+      }
+
+      const data = await resp.json();
+      return data.answer || "";
+    }
+
+    async function handleSend() {
+      const question = inputEl.value.trim();
+      if (!question || isLoading) return;
+
+      // show user msg immediately
+      appendMessage("user", question);
+      inputEl.value = "";
+      inputEl.style.height = "24px";
+      inputEl.focus();
+
+      // clear error
+      errorEl.style.display = "none";
+      errorEl.textContent = "";
+
+      isLoading = true;
+      sendBtn.disabled = true;
+      sendBtn.textContent = "Thinking…";
+
+      try {
+        const answer = await callRag(question);
+        appendMessage("assistant", answer || "(no answer)");
+      } catch (err) {
+        console.error(err);
+        errorEl.textContent = err.message || "Something went wrong while calling RAG backend.";
+        errorEl.style.display = "block";
+        appendMessage("assistant", "Sorry, I could not get an answer from the backend.");
+      } finally {
+        isLoading = false;
+        sendBtn.disabled = false;
+        sendBtn.textContent = "Send";
+      }
+    }
+
+    // Auto-resize textarea
+    inputEl.addEventListener("input", () => {
+      inputEl.style.height = "24px";
+      const newHeight = Math.min(inputEl.scrollHeight, 70);
+      inputEl.style.height = newHeight + "px";
+    });
+
+    // Initial welcome message
+    appendMessage(
+      "assistant",
+      "Hi! I’m your Credit RAG assistant. Ask me about CARP rules, exposure limits, credit policies, or approval workflows."
+    );
+
+    // ✅ Make sure Send works on click
+    sendBtn.addEventListener("click", handleSend);
+
+    // ✅ And on Enter (Shift+Enter = new line)
+    inputEl.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" && !e.shiftKey) {
+        e.preventDefault();
+        handleSend();
+      }
+    });
+  </script>
+</body>
+</html>
