@@ -4,79 +4,67 @@
   <meta charset="UTF-8" />
   <title>Credit RAG Assistant</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <style>
     :root {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       color: #0f172a;
-      background: radial-gradient(circle at top, #e0f2fe 0, #f3f4f6 45%, #e5e7eb 100%);
     }
 
     body {
       margin: 0;
+      background: linear-gradient(135deg, #dbeafe 0%, #eff6ff 50%, #f8fafc 100%);
     }
 
+    /* ---------------- Banner ---------------- */
+    .banner {
+      width: 100%;
+      padding: 30px 0;
+      text-align: center;
+      background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 40%, #1d4ed8 100%);
+      color: white;
+      box-shadow: 0px 4px 14px rgba(0,0,0,0.15);
+    }
+
+    .banner-title {
+      font-size: 1.9rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      margin: 0;
+      text-transform: uppercase;
+    }
+
+    .banner-sub {
+      margin: 8px 0 0;
+      font-size: 0.95rem;
+      opacity: 0.9;
+    }
+
+    /* ---------------- Main Container ---------------- */
     .app-root {
-      height: 100vh;
+      height: calc(100vh - 140px);
       display: grid;
-      grid-template-rows: auto 1fr auto;
-      max-width: 720px;          /* narrower, less “big box” */
-      margin: 0 auto;
-      padding: 16px 12px;
+      grid-template-rows: 1fr auto;
+      max-width: 720px;
+      margin: 20px auto;
+      padding: 0 16px;
       box-sizing: border-box;
     }
 
-    .app-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 12px;
-      padding: 10px 14px;
-      background: white;
-      border-radius: 14px;
-      box-shadow: 0 6px 16px rgba(15, 23, 42, 0.08);
-      border: 1px solid #e5e7eb;
-    }
-
-    .app-header h1 {
-      margin: 0;
-      font-size: 1.1rem;
-      font-weight: 600;
-    }
-
-    .app-subtitle {
-      margin: 4px 0 0;
-      font-size: 0.8rem;
-      color: #6b7280;
-    }
-
-    .env-pill {
-      font-size: 0.7rem;
-      background: #eff6ff;
-      color: #1d4ed8;
-      padding: 3px 8px;
-      border-radius: 999px;
-      max-width: 220px;
-      text-overflow: ellipsis;
-      overflow: hidden;
-      white-space: nowrap;
-      border: 1px solid #bfdbfe;
-    }
-
+    /* ---------------- Chat Box ---------------- */
     .app-main {
-      margin-top: 10px;
-      margin-bottom: 8px;
-      padding: 10px 12px;
+      padding: 14px 16px;
       background: white;
-      border-radius: 14px;
-      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
-      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
       overflow-y: auto;
+      border: 1px solid #e5e7eb;
     }
 
     .message-list {
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 10px;
     }
 
     .message-row {
@@ -93,10 +81,11 @@
 
     .message-bubble {
       max-width: 78%;
-      padding: 7px 10px;
-      border-radius: 12px;
-      font-size: 0.9rem;
-      line-height: 1.35;
+      padding: 10px 14px;
+      border-radius: 14px;
+      font-size: 0.92rem;
+      line-height: 1.45;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
     }
 
     .message-bubble--user {
@@ -113,108 +102,87 @@
     }
 
     .message-role {
-      font-size: 0.68rem;
+      font-size: 0.7rem;
       font-weight: 600;
-      opacity: 0.8;
-      margin-bottom: 2px;
+      margin-bottom: 4px;
+      opacity: 0.7;
       text-transform: uppercase;
-      letter-spacing: 0.03em;
     }
 
-    .message-text {
-      white-space: pre-wrap;
-    }
-
+    /* ---------------- Input Bar ---------------- */
     .app-footer {
-      padding-top: 4px;
+      padding: 14px 0;
     }
 
     .message-input {
       display: flex;
-      gap: 8px;
-      align-items: center;
-      padding: 6px 8px;
+      gap: 10px;
+      padding: 10px 12px;
       background: white;
       border-radius: 999px;
-      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
-      border: 1px solid #e5e7eb;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border: 1px solid #e2e8f0;
     }
 
     .message-input__textarea {
       flex: 1;
       resize: none;
-      padding: 6px 8px;
-      border-radius: 999px;
       border: none;
       font-family: inherit;
       font-size: 0.9rem;
-      line-height: 1.3;
-      max-height: 72px;     /* prevent it from getting too tall */
-      min-height: 28px;     /* small by default */
+      padding: 6px 0;
       outline: none;
-    }
-
-    .message-input__textarea::placeholder {
-      color: #9ca3af;
-      font-size: 0.85rem;
+      max-height: 80px;
+      min-height: 26px;
     }
 
     .message-input__button {
-      padding: 6px 14px;
+      padding: 8px 16px;
       border-radius: 999px;
       border: none;
-      font-size: 0.85rem;
-      cursor: pointer;
-      background: #2563eb;
+      background: #1d4ed8;
       color: white;
-      font-weight: 500;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
       white-space: nowrap;
+      transition: 0.2s;
+    }
+
+    .message-input__button:hover {
+      background: #1e40af;
     }
 
     .message-input__button:disabled {
-      opacity: 0.65;
+      background: #93c5fd;
       cursor: default;
     }
 
+    /* Error message */
     .app-error {
       margin-bottom: 6px;
-      padding: 6px 10px;
-      border-radius: 8px;
-      background: #fef2f2;
+      padding: 8px 12px;
+      border-radius: 10px;
+      background: #fee2e2;
       color: #b91c1c;
-      font-size: 0.78rem;
+      font-size: 0.85rem;
       display: none;
-    }
-
-    @media (max-width: 600px) {
-      .app-root {
-        max-width: 100%;
-        padding-inline: 8px;
-      }
-
-      .app-header,
-      .app-main {
-        padding-inline: 10px;
-      }
-
-      .message-bubble {
-        max-width: 84%;
-      }
+      border: 1px solid #fecaca;
     }
   </style>
 </head>
-<body>
-  <div class="app-root">
-    <header class="app-header">
-      <div>
-        <h1>Credit RAG Assistant</h1>
-        <p class="app-subtitle">
-          Ask questions on credit policies, CARP rules, facility limits, and approvals.
-        </p>
-      </div>
-      <div class="env-pill" id="env-pill"></div>
-    </header>
 
+<body>
+
+  <!-- 🔵 BEAUTIFUL TOP BANNER -->
+  <div class="banner">
+    <h1 class="banner-title">CREDIT RAG ASSISTANT</h1>
+    <p class="banner-sub">AI-powered answers for CARP, Credit Policies, Exposure, and more.</p>
+  </div>
+
+  <!-- MAIN APP -->
+  <div class="app-root">
+    
     <main class="app-main">
       <div id="error" class="app-error"></div>
       <div id="message-list" class="message-list"></div>
@@ -222,45 +190,30 @@
 
     <footer class="app-footer">
       <div class="message-input">
-        <textarea
-          id="input"
-          class="message-input__textarea"
-          rows="1"
-          placeholder="Ask about a credit policy, CARP, exposure, limits..."
-        ></textarea>
-        <button id="send-btn" class="message-input__button">
-          Send
-        </button>
+        <textarea id="input" class="message-input__textarea" rows="1" placeholder="Ask anything about credit policies..."></textarea>
+        <button id="send-btn" class="message-input__button">Send</button>
       </div>
     </footer>
+
   </div>
 
+
   <script>
-    // ==== CONFIG: set to your FastAPI endpoint ====
     const RAG_API_URL = "http://localhost:8000/search";
 
     const messageListEl = document.getElementById("message-list");
     const inputEl = document.getElementById("input");
     const sendBtn = document.getElementById("send-btn");
     const errorEl = document.getElementById("error");
-    const envPillEl = document.getElementById("env-pill");
-
-    envPillEl.textContent = "Backend: " + RAG_API_URL;
 
     let isLoading = false;
 
     function createMessageElement(role, text) {
       const row = document.createElement("div");
-      row.className =
-        "message-row " +
-        (role === "user" ? "message-row--user" : "message-row--assistant");
+      row.className = "message-row " + (role === "user" ? "message-row--user" : "message-row--assistant");
 
       const bubble = document.createElement("div");
-      bubble.className =
-        "message-bubble " +
-        (role === "user"
-          ? "message-bubble--user"
-          : "message-bubble--assistant");
+      bubble.className = "message-bubble " + (role === "user" ? "message-bubble--user" : "message-bubble--assistant");
 
       const roleLabel = document.createElement("div");
       roleLabel.className = "message-role";
@@ -273,99 +226,41 @@
       bubble.appendChild(roleLabel);
       bubble.appendChild(textEl);
       row.appendChild(bubble);
+
       return row;
     }
 
     function appendMessage(role, text) {
       const el = createMessageElement(role, text);
       messageListEl.appendChild(el);
-      const container = messageListEl.parentElement;
-      container.scrollTop = container.scrollHeight;
+      messageListEl.parentElement.scrollTop = messageListEl.parentElement.scrollHeight;
     }
 
     async function callRag(question) {
       const resp = await fetch(RAG_API_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          question: question,
-          kind: "all",
-          k: "5"
-        })
+        body: JSON.stringify({ question, kind: "all", k: "5" })
       });
 
       if (!resp.ok) {
-        const text = await resp.text().catch(() => "");
-        throw new Error(
-          `Backend error (${resp.status}): ${text || resp.statusText}`
-        );
+        throw new Error("Backend responded with: " + resp.status);
       }
 
       const data = await resp.json();
-
-      // Your backend: { "answer": "Vertex Answer" }
-      return {
-        answer: data.answer || ""
-      };
+      return data.answer || "";
     }
 
     async function handleSend() {
-      const question = inputEl.value.trim();
-      if (!question || isLoading) return;
+      const text = inputEl.value.trim();
+      if (!text || isLoading) return;
 
-      // clear error
       errorEl.style.display = "none";
-      errorEl.textContent = "";
+      appendMessage("user", text);
 
-      appendMessage("user", question);
       inputEl.value = "";
-      inputEl.style.height = "28px"; // reset small
-      inputEl.focus();
+      inputEl.style.height = "26px";
 
       isLoading = true;
       sendBtn.disabled = true;
       sendBtn.textContent = "Thinking…";
-
-      try {
-        const { answer } = await callRag(question);
-        appendMessage("assistant", answer || "(no answer)");
-      } catch (err) {
-        console.error(err);
-        errorEl.textContent =
-          err.message || "Something went wrong while calling RAG backend.";
-        errorEl.style.display = "block";
-        appendMessage(
-          "assistant",
-          "Sorry, I could not get an answer from the backend. Please try again or contact support."
-        );
-      } finally {
-        isLoading = false;
-        sendBtn.disabled = false;
-        sendBtn.textContent = "Send";
-      }
-    }
-
-    // Auto-adjust textarea height (but still small)
-    inputEl.addEventListener("input", () => {
-      inputEl.style.height = "28px";
-      const newHeight = Math.min(inputEl.scrollHeight, 72);
-      inputEl.style.height = newHeight + "px";
-    });
-
-    // Initial welcome message
-    appendMessage(
-      "assistant",
-      "Hi! I am your Credit RAG assistant. Ask me about credit policies, limits, approval workflows, or specific client scenarios."
-    );
-
-    // Events
-    sendBtn.addEventListener("click", handleSend);
-    inputEl.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" && !e.shiftKey) {
-        e.preventDefault();
-        handleSend();
-      }
-    });
-  </script>
-</body>
-</html>
