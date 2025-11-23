@@ -1,0 +1,353 @@
+%PDF-1.4
+%“Œ‹ž ReportLab Generated PDF document http://www.reportlab.com
+1 0 obj
+<<
+/F1 2 0 R /F2 3 0 R
+>>
+endobj
+2 0 obj
+<<
+/BaseFont /Helvetica /Encoding /WinAnsiEncoding /Name /F1 /Subtype /Type1 /Type /Font
+>>
+endobj
+3 0 obj
+<<
+/BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding /Name /F2 /Subtype /Type1 /Type /Font
+>>
+endobj
+4 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://cloud.google.com/blog/products/ai-machine-learning/improve-gen-ai-search-with-vertex-ai-embeddings-and-task-types)
+>> /Border [ 0 0 0 ] /Rect [ 84.908 658.6898 331.902 671.8898 ] /Subtype /Link /Type /Annot
+>>
+endobj
+5 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://cloud.google.com/vertex-ai/generative-ai/docs/embeddings/get-text-embeddings)
+>> /Border [ 0 0 0 ] /Rect [ 84.908 635.0898 242.637 648.2898 ] /Subtype /Link /Type /Annot
+>>
+endobj
+6 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://cloud.google.com/vertex-ai/generative-ai/docs/embeddings/task-types)
+>> /Border [ 0 0 0 ] /Rect [ 84.908 611.4898 200.452 624.6898 ] /Subtype /Link /Type /Annot
+>>
+endobj
+7 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://ai.google.dev/gemini-api/docs/embeddings)
+>> /Border [ 0 0 0 ] /Rect [ 84.908 587.8898 204.731 601.0898 ] /Subtype /Link /Type /Annot
+>>
+endobj
+8 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.pinecone.io/learn/vector-embeddings/)
+>> /Border [ 0 0 0 ] /Rect [ 84.908 564.2898 290.344 577.4898 ] /Subtype /Link /Type /Annot
+>>
+endobj
+9 0 obj
+<<
+/Annots [ 4 0 R 5 0 R 6 0 R 7 0 R 8 0 R ] /Contents 36 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 35 0 R /Resources <<
+/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>> /Rotate 0 
+  /Trans <<
+
+>> /Type /Page
+>>
+endobj
+10 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://cloud.google.com/vertex-ai/docs/vector-search/overview)
+>> /Border [ 0 0 0 ] /Rect [ 84.908 735.0898 238.347 748.2898 ] /Subtype /Link /Type /Annot
+>>
+endobj
+11 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://cloud.google.com/vertex-ai/docs/matching-engine/overview)
+>> /Border [ 0 0 0 ] /Rect [ 84.908 711.4898 215.731 724.6898 ] /Subtype /Link /Type /Annot
+>>
+endobj
+12 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://cloud.google.com/blog/products/ai-machine-learning/introducing-vertex-ai-rag-engine)
+>> /Border [ 0 0 0 ] /Rect [ 84.908 687.8898 238.369 701.0898 ] /Subtype /Link /Type /Annot
+>>
+endobj
+13 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://medium.com/google-cloud/vertex-ai-rag-engine-goes-ga-list-of-resources-d0abce9740f4)
+>> /Border [ 0 0 0 ] /Rect [ 84.908 664.2898 219.405 677.4898 ] /Subtype /Link /Type /Annot
+>>
+endobj
+14 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://medium.com/google-cloud/building-vertex-ai-rag-engine-with-gemini-2-flash-llm-79c27445dd48)
+>> /Border [ 0 0 0 ] /Rect [ 84.908 640.6898 235.894 653.8898 ] /Subtype /Link /Type /Annot
+>>
+endobj
+15 0 obj
+<<
+/Annots [ 10 0 R 11 0 R 12 0 R 13 0 R 14 0 R ] /Contents 37 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 35 0 R /Resources <<
+/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>> /Rotate 0 
+  /Trans <<
+
+>> /Type /Page
+>>
+endobj
+16 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.pinecone.io/blog/hybrid-search/)
+>> /Border [ 0 0 0 ] /Rect [ 84.908 735.0898 245.09 748.2898 ] /Subtype /Link /Type /Annot
+>>
+endobj
+17 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.pinecone.io/learn/hybrid-search-intro/)
+>> /Border [ 0 0 0 ] /Rect [ 84.908 711.4898 179.662 724.6898 ] /Subtype /Link /Type /Annot
+>>
+endobj
+18 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://qdrant.tech/articles/what-is-a-vector-database/)
+>> /Border [ 0 0 0 ] /Rect [ 84.908 687.8898 235.916 701.0898 ] /Subtype /Link /Type /Annot
+>>
+endobj
+19 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://cohere.com/blog/chunking-for-rag-maximize-enterprise-knowledge-retrieval)
+>> /Border [ 0 0 0 ] /Rect [ 84.908 664.2898 222.463 677.4898 ] /Subtype /Link /Type /Annot
+>>
+endobj
+20 0 obj
+<<
+/Annots [ 16 0 R 17 0 R 18 0 R 19 0 R ] /Contents 38 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 35 0 R /Resources <<
+/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>> /Rotate 0 
+  /Trans <<
+
+>> /Type /Page
+>>
+endobj
+21 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://cohere.com/blog/agentic-rag)
+>> /Border [ 0 0 0 ] /Rect [ 84.908 735.0898 196.789 748.2898 ] /Subtype /Link /Type /Annot
+>>
+endobj
+22 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://orkes.io/blog/rag-best-practices/)
+>> /Border [ 0 0 0 ] /Rect [ 84.908 711.4898 182.104 724.6898 ] /Subtype /Link /Type /Annot
+>>
+endobj
+23 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://cloud.google.com/blog/products/ai-machine-learning/build-and-manage-multi-system-agents-with-vertex-ai)
+>> /Border [ 0 0 0 ] /Rect [ 84.908 687.8898 229.789 701.0898 ] /Subtype /Link /Type /Annot
+>>
+endobj
+24 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://cloud.google.com/agent-builder/agent-engine/overview)
+>> /Border [ 0 0 0 ] /Rect [ 84.908 664.2898 234.695 677.4898 ] /Subtype /Link /Type /Annot
+>>
+endobj
+25 0 obj
+<<
+/Annots [ 21 0 R 22 0 R 23 0 R 24 0 R ] /Contents 39 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 35 0 R /Resources <<
+/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>> /Rotate 0 
+  /Trans <<
+
+>> /Type /Page
+>>
+endobj
+26 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://developers.google.com/checks/guide/ai-safety/guardrails)
+>> /Border [ 0 0 0 ] /Rect [ 84.908 735.0898 185.778 748.2898 ] /Subtype /Link /Type /Annot
+>>
+endobj
+27 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://cloud.google.com/security/securing-ai)
+>> /Border [ 0 0 0 ] /Rect [ 84.908 711.4898 278.717 724.6898 ] /Subtype /Link /Type /Annot
+>>
+endobj
+28 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://cloud.google.com/blog/products/ai-machine-learning/evaluating-gen-ai)
+>> /Border [ 0 0 0 ] /Rect [ 84.908 687.8898 215.742 701.0898 ] /Subtype /Link /Type /Annot
+>>
+endobj
+29 0 obj
+<<
+/Annots [ 26 0 R 27 0 R 28 0 R ] /Contents 40 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 35 0 R /Resources <<
+/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>> /Rotate 0 
+  /Trans <<
+
+>> /Type /Page
+>>
+endobj
+30 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://cloud.google.com/solutions/financial-services)
+>> /Border [ 0 0 0 ] /Rect [ 84.908 735.0898 315.391 748.2898 ] /Subtype /Link /Type /Annot
+>>
+endobj
+31 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://ai.googleblog.com)
+>> /Border [ 0 0 0 ] /Rect [ 84.908 711.4898 226.742 724.6898 ] /Subtype /Link /Type /Annot
+>>
+endobj
+32 0 obj
+<<
+/Annots [ 30 0 R 31 0 R ] /Contents 41 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 35 0 R /Resources <<
+/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>> /Rotate 0 
+  /Trans <<
+
+>> /Type /Page
+>>
+endobj
+33 0 obj
+<<
+/PageMode /UseNone /Pages 35 0 R /Type /Catalog
+>>
+endobj
+34 0 obj
+<<
+/Author (\(anonymous\)) /CreationDate (D:20251123062538+00'00') /Creator (\(unspecified\)) /Keywords () /ModDate (D:20251123062538+00'00') /Producer (ReportLab PDF Library - www.reportlab.com) 
+  /Subject (\(unspecified\)) /Title (\(anonymous\)) /Trapped /False
+>>
+endobj
+35 0 obj
+<<
+/Count 6 /Kids [ 9 0 R 15 0 R 20 0 R 25 0 R 29 0 R 32 0 R ] /Type /Pages
+>>
+endobj
+36 0 obj
+<<
+/Filter [ /ASCII85Decode /FlateDecode ] /Length 552
+>>
+stream
+Gat=gbAQ&g&4Q?mMHL[3JZp-.eQpn=JUo@MKLe&T-kbjMNatYC>NbHJb,V9VPn4c8#Z6p.SiahUTOD4iB*H(`$Qm,-+9VKC:_3[$"r;CU1;e"-2P:3d@1j5K"G%]76m3*bC%t2]0N/#&C)2E[0g;@?M\)BZ'/;IV0sji38T',tF-n2aq!QoU/sgPO=uWU7.p)UJq&\luYTMeTPJd`!A[h]_Y,ZlXHeoM,^mK_X:)fP;NA&oVnW745WMI-NGki,p^O@"4gA*ak<74Dm-\e?;1sna6KdsYX<,gn:M!U;A'[oC'Cr!]kL(TYuJjo4no%]S4)W&<$/(1`n=nkOgm--2!s&bQ;`/LqC?92NV/ZUk8L@Sea4c#6e!O[[Uf(lW(<h!G+Y$DpGd.4tjh`S`gWuAI.[HZ?l8YmPGKTu5Zfq]XLFo,d<c1W;cD6dk6:5Klt_d5BnmDoAfXk-rf[r.XilEM-RN?3FtDs+ZSKeNBY9p`?4.3N@"Z,KKb`<Y4K-IAkJ?+)3<Tj7=ECGs]SDmA1`VdW@b#q;'(0>Qob2j59d~>endstream
+endobj
+37 0 obj
+<<
+/Filter [ /ASCII85Decode /FlateDecode ] /Length 412
+>>
+stream
+Gat>R5u3+e'F4.)5/mP4VMC1%9?XuYA5!Yr;9?K;Juk!t#*Haaa1&9a-uid#RW/)sQ!YUDJn#VIcZfVP64<ns\Hq(YJdI,)(l,f.*pn/$+%e"0r1S$ZCg]p"E/Lc%Jc)N_&@`icS\lG`M(::+TqN_c=1V"Ka;='TCAeH&F'U5t1"C9+j`o0M*[eJ5o?@D(<i5Je0Nl!$7/2?&Wq&:*p"/72k3bt2Lc81hbA495EUC05ipOYj2^>.q^U6;VH(huW_T.Y]2b%^I@GG;^#`P59CtM*S`/.&%(oIb*lI/Fe@a>!#kr7#CVRs4VZ[!EiXF9-/:Uq-^_5,BfPLY[=5;mV]_\r]Mof=Vp=Q?i;lQgaCjrYc:-9@VQ.a<!?[qBK6";AI(WNlJ#Y`..)-]H5U'9Cu\0([sK~>endstream
+endobj
+38 0 obj
+<<
+/Filter [ /ASCII85Decode /FlateDecode ] /Length 374
+>>
+stream
+Gat>Q5u5?O(^An[^Z%BooMG7h?!FrY5sZ.pU5N9dbYd"<CpB"Qs5"6IKgcbERe61ECS/$W+n1,mF0YuS&UGZ'EC:1rA.m9'm\A'?L\<7+JQA42dl5"X#JPj$]D/rpaAc0Q&I5:M*u7C56A'smobE$t`O--5QKV)G>p5_XY1,<M^>E3Sa/b2*P2ZP\FH`o6I!LS4"4:*PRJ:c\#pnVY9J[<(e8U;I;sp1T^/R+:@ATETf%?SJIEll&'Y-YDC^A(NCi3Hs,%0[=Np>hEgbItH03uuJ#rE%hjsX.uB6,D@(['oJV5@s3,5X]c2k-%c_qj7Jc)-FZ1fZ>0i`*\kh_m#`lh8*ggK.L%f?<QkeJ7eG3OmH3!V9d1oD~>endstream
+endobj
+39 0 obj
+<<
+/Filter [ /ASCII85Decode /FlateDecode ] /Length 379
+>>
+stream
+Gat>Q5u5?O'F4+hTAk>UBO]Y1]=)qd"(!f6/pcJC`Y57(j#3faHb58f&m5WWd`]D/rO%',^^mI.GQeL#oYq#sL`SicBLJ1(7@gmtX]J[2CTPmcmsKg"HjOY5nT?@DX/^JU#r:$p,1)43Ka7eG)hO/@=reekT_lP&!]u[q\2+QUjXcC:NX6M)_W>Tj,7G?X(.jJ,i8PU$1SU'?FR-tc<2bLUUNRliNHVt7p?KZ`mnK(V#qOhrX@7PPpBLd8([%ttS8g&N"iBULd5F%Q<)JC?(V%S!Z+"`0WX5a4rmhpqN=ONE]e><)o^44_Gh%1FhE9:NB*Ednd>V"nL>%WGg=L-?V_s&1Ki,EP;T<k$=debLX"3NE[rJ,5%H#18fD~>endstream
+endobj
+40 0 obj
+<<
+/Filter [ /ASCII85Decode /FlateDecode ] /Length 344
+>>
+stream
+Gat>Qc"hqc(^BKAJ&QJNUL\YF-G%qi3Z79^%.)E#Zr+F162_Ym^L+?RV5*WY!a_JnjS)+Mgb'M;RhBtsG^(NrJBgDDo:b'HeBZpEdnUWE8]CT]$LJcj@,1Lt;d]X(8.q;O6MUYNgp(^<5/:3b[Tn@D=<7t&mY<N(Lt4m`if?XYb]JUDi]_4f9tDk/"d\%[dAPg'Y3qrIU$i64b-"B9i%o@.rJeH=g0^;]_*m=Fj4H30Na\-h?'A/':N\#sZFW><Wi*=/O2m[da$WdIZR7Js^+i+_P!dulZGgdBM!I)T$snh&hp)S>@f3f6L/W3#nFsOpq5&,W,X_%uB<<.55F!1Uq>~>endstream
+endobj
+41 0 obj
+<<
+/Filter [ /ASCII85Decode /FlateDecode ] /Length 332
+>>
+stream
+Gat>OYti1j&-h(+:[q5Z0Xs<eYu<PG"<hnR[D^M49&1%L@RsBBhB"b\>#@QjABE$`4+DGW*Y+0Rd/^W[Z^a8^Acn2i_CTYE-6EoT^XO..dS+9E/6%9FPgH*sW,"Y$XIA5PUgbFcAO;4X90(63JI*X09[T,m5!/KCU6Q:I`&2ERZ1/k*WjQ\@fc!N8I9)'fEIihMCY/54eb^Z:/'M"H4b`J@QV&Uu\C2id7ORV7FN^4:bYQX"$_q`2>%@JQq?nmJQbM;dQ#D#f8atYd=ZbEhI_.e%9fQ($@-JO,)]N?UB*VLeKa!pj[XD7r@jCZJMeg<C/kit[3u!7-~>endstream
+endobj
+xref
+0 42
+0000000000 65535 f 
+0000000073 00000 n 
+0000000114 00000 n 
+0000000221 00000 n 
+0000000333 00000 n 
+0000000603 00000 n 
+0000000836 00000 n 
+0000001060 00000 n 
+0000001257 00000 n 
+0000001454 00000 n 
+0000001701 00000 n 
+0000001913 00000 n 
+0000002127 00000 n 
+0000002368 00000 n 
+0000002609 00000 n 
+0000002857 00000 n 
+0000003110 00000 n 
+0000003302 00000 n 
+0000003502 00000 n 
+0000003707 00000 n 
+0000003937 00000 n 
+0000004183 00000 n 
+0000004368 00000 n 
+0000004559 00000 n 
+0000004819 00000 n 
+0000005029 00000 n 
+0000005275 00000 n 
+0000005488 00000 n 
+0000005683 00000 n 
+0000005909 00000 n 
+0000006148 00000 n 
+0000006351 00000 n 
+0000006526 00000 n 
+0000006758 00000 n 
+0000006828 00000 n 
+0000007112 00000 n 
+0000007207 00000 n 
+0000007850 00000 n 
+0000008353 00000 n 
+0000008818 00000 n 
+0000009288 00000 n 
+0000009723 00000 n 
+trailer
+<<
+/ID 
+[<e9225a5c987a8ae44e65ee2fb8fdff89><e9225a5c987a8ae44e65ee2fb8fdff89>]
+% ReportLab generated PDF document -- digest (http://www.reportlab.com)
+
+/Info 34 0 R
+/Root 33 0 R
+/Size 42
+>>
+startxref
+10146
+%%EOF
